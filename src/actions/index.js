@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export const FETCH_JOBS = 'FETCH_JOBS';
 export const CREATE_JOB = 'CREATE_JOB';
+export const FETCH_JOB  = 'FETCH_JOB';
+
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
 const API_KEY  = '?key=hdgfkjhmgfkhjmldkfjhkgpmljgfdk123'
@@ -20,6 +22,15 @@ export function createJob(props) {
 
   return {
     type: CREATE_JOB,
+    payload: request
+  }
+}
+
+export function fetchJob(id) {
+  const request = axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+  return {
+    type: FETCH_JOB,
     payload: request
   }
 }

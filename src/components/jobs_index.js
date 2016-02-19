@@ -13,8 +13,10 @@ class JobsIndex extends Component {
     return this.props.jobs.map((job) => {
       return (
         <li className="list-group-item" key={job.id}>
-          <span className="pull-xs-right"> {job.categories}</span>
-          <strong>{job.title}</strong>
+          <Link to={"jobs/" + job.id}>
+            <span className="pull-xs-right"> {job.categories}</span>
+            <strong>{job.title}</strong>
+          </Link>
         </li>
       )
     })
