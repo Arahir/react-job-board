@@ -9,7 +9,10 @@ class JobsShow extends Component {
   };
 
   componentWillMount() {
-    this.props.fetchJob(this.props.params.id);
+    this.props.fetchJob(this.props.params.id)
+    .then((res) => {
+      if(res.payload.status === 404) this.context.router.push('/jobs');
+    })
   }
 
   onDeleteClick() {
