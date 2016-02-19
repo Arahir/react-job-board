@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCH_JOBS = 'FETCH_JOBS';
 export const CREATE_JOB = 'CREATE_JOB';
 export const FETCH_JOB  = 'FETCH_JOB';
+export const DELETE_JOB = 'DELETE_JOB'
 
 
 const ROOT_URL = 'http://reduxblog.herokuapp.com/api';
@@ -31,6 +32,15 @@ export function fetchJob(id) {
 
   return {
     type: FETCH_JOB,
+    payload: request
+  }
+}
+
+export function deleteJob(id) {
+  const request = axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`);
+
+  return {
+    type: DELETE_JOB,
     payload: request
   }
 }
